@@ -1,0 +1,16 @@
+footer {
+  background-color: #034c8c;
+}
+
+img {
+  width: 30%;
+  display: block;
+  margin: 0 0 0 120px;
+  padding: 1rem;
+}
+
+p {
+  text-align: center;
+  padding: 0.5rem;
+  color: white;
+}
