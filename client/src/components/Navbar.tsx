@@ -1,19 +1,53 @@
+import { useState } from "react";
 import { NavLink } from "react-router";
-import educnova from "../assets/images/EducNova.png";
 import "../assets/styles/navbar.css";
 
-function navbar() {
-  return (
-    <nav>
-      <NavLink to="/Accueil">Accueil</NavLink>
-      <NavLink to="/Etablissement">Etablissement</NavLink>
-      <NavLink to="/Equipe scolaire">Equipe scolaire</NavLink>
-      <NavLink to="/Calendrier scolaire">Calendrier scolaire</NavLink>
-      <NavLink to="/Programmes">Programmes</NavLink>
+import educnova from "../assets/images/EducNova.png";
 
-      <img src={educnova} alt="Logo Educnova" className="educnova" />
-    </nav>
+function Navbar() {
+  const [active, setActive] = useState(false);
+  const ToggleMenu = () => {
+    setActive(!active);
+  };
+  return (
+    <>
+      <nav>
+        <div className="menu_burger" onMouseDown={ToggleMenu}>
+          <span />
+          <span />
+          <span />
+        </div>
+        <img src={educnova} alt="Logo Educnova" className="educnova" />
+        <div className={`sidenav ${active ? "active" : ""}`}>
+          <button
+            type="button"
+            className="closeBtn"
+            onClick={() => setActive(false)}
+          >
+            X
+          </button>
+          <ul>
+            <li>
+              <NavLink to="/Accueil">Accueil</NavLink>
+            </li>
+            <li>
+              <NavLink to="/Etablissement">Etablissement</NavLink>
+            </li>
+            <li>
+              <NavLink to="/Equipe_scolaire">Equipe scolaire</NavLink>
+            </li>
+            <li>
+              {" "}
+              <NavLink to="/Calendrier_scolaire">Calendrier scolaire</NavLink>
+            </li>
+            <li>
+              <NavLink to="/Programmes">Programmes</NavLink>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </>
   );
 }
 
-export default navbar;
+export default Navbar;
